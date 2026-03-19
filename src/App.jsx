@@ -60,7 +60,7 @@ export default function SiddetsizIletisimSitesi() {
         <header className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
           <div>
             <p className="text-lg font-semibold tracking-tight">Zeynep</p>
-            <p className="text-sm text-stone-500">Şiddetsiz İletişim Kolaylaştırıcısı & Topluluk Kurucusu</p>
+            <p className="text-sm text-stone-500">Topluluk Mimarı · Kolaylaştırıcı · Öğrenme Tasarımcısı</p>
           </div>
           <a
             href="#iletisim"
