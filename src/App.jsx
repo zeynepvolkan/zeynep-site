@@ -3,19 +3,19 @@ import { ArrowRight, Globe, Heart, MessageCircleHeart, Sparkles, Users } from "l
 export default function SiddetsizIletisimSitesi() {
   const services = [
     {
-      title: "Bireysel Seanslar",
+      title: "Derin Bağlantı",
       description:
         "Kendi duygularınızı ve ihtiyaçlarınızı daha net duyabilmeniz, zor konuşmalara daha açıklıkla yaklaşabilmeniz için bire bir alan.",
       icon: Heart,
     },
     {
-      title: "İlişki ve Yakınlık Alanları",
+      title: "Topluluk",
       description:
         "Çiftler, yakın ilişkiler ve aileler için daha güvenli, duyulmuş ve bağ kuran bir iletişim pratiği geliştirmeye yönelik görüşmeler.",
       icon: MessageCircleHeart,
     },
     {
-      title: "Atölyeler & Topluluk Buluşmaları",
+      title: "Kolaylaştırıcılık",
       description:
         "Topluluklar, ekipler ve kurumlar için deneyimsel atölyeler, kolaylaştırıcılık ve birlikte öğrenme alanları.",
       icon: Users,
@@ -57,101 +57,128 @@ export default function SiddetsizIletisimSitesi() {
         <div className="absolute -left-24 top-16 h-72 w-72 rounded-full bg-rose-100/60 blur-3xl" />
         <div className="absolute right-0 top-0 h-96 w-96 rounded-full bg-emerald-100/60 blur-3xl" />
 
-        <header className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
-          <div>
-            <p className="text-lg font-semibold tracking-tight">Zeynep</p>
-            <p className="text-sm text-stone-500">Topluluk Mimarı · Kolaylaştırıcı · Öğrenme Tasarımcısı</p>
-          </div>
-          <a
-            href="#iletisim"
-            className="hidden rounded-full border border-stone-300/80 bg-white/80 px-5 py-2.5 text-sm font-medium shadow-sm backdrop-blur md:inline-flex"
-          >
-            Tanışma Görüşmesi
-          </a>
-        </header>
+       <header className="relative mx-auto flex max-w-7xl items-center justify-between px-6 py-6">
+  
+  {/* SOL: LOGO */}
+  <div>
+    <p className="text-lg font-semibold tracking-tight">Zeynep Zumbul</p>
+    <p className="text-sm text-stone-500">
+      Topluluk Mimarı · Kolaylaştırıcı · Öğrenme Tasarımcısı
+    </p>
+  </div>
+
+  {/* SAĞ: MENÜ */}
+  <div className="flex items-center gap-6">
+
+    <a href="#hakkinda" className="text-sm text-stone-600 hover:text-stone-900 transition">
+      Hakkımda
+    </a>
+
+    <a href="#bulten" className="text-sm text-stone-600 hover:text-stone-900 transition">
+      Bültene Katıl
+    </a>
+
+    <a href="#topluluk" className="text-sm text-stone-600 hover:text-stone-900 transition">
+      Topluluğa Katıl
+    </a>
+
+    <a
+      href="#iletisim"
+      className="rounded-full border border-stone-300/80 bg-white/80 px-5 py-2.5 text-sm font-medium shadow-sm backdrop-blur"
+    >
+      Tanışma Görüşmesi
+    </a>
+
+  </div>
+</header>
 
         <div className="relative mx-auto max-w-7xl px-6 pb-20 pt-8 md:pb-28 md:pt-10">
-          <div className="grid items-center gap-14 lg:grid-cols-[1.1fr_0.9fr]">
-            <div>
-              <div className="inline-flex items-center gap-2 rounded-full border border-stone-300/80 bg-white/80 px-4 py-2 text-sm text-stone-700 shadow-sm backdrop-blur">
-                <Sparkles className="h-4 w-4" />
-                Schiedam, Hollanda merkezli • çoğunlukla online
-              </div>
+       <div className="grid items-center gap-12 lg:grid-cols-2">
+  
+  {/* SOL: FOTOĞRAF */}
+  <div className="relative">
+    <img
+      src="/zeynep-zumbul-1.jpeg"
+      alt="Zeynep"
+      className="h-[500px] w-full object-cover rounded-[2rem]"
+    />
+  </div>
 
-              <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[1.02] tracking-tight md:text-7xl">
-                Daha şefkatli, net ve bağ kuran ilişkiler için bir alan
-              </h1>
+  {/* SAĞ: METİN */}
+  <div>
+    
 
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-600 md:text-xl">
-                Zeynep; bireyler, ilişkiler ve topluluklarla şiddetsiz iletişim temelli çalışmalar yürütür. Amaç yalnızca daha iyi konuşmak değil, daha derin duymak, daha sahici temas kurmak ve çatışmaları dönüştürücü bir alana çevirebilmektir.
-              </p>
+    <h1 className="mt-6 text-5xl font-semibold leading-[1.05] tracking-tight md:text-6xl">
+      Değişim, bağlantıda&nbsp;başlar.
+    </h1>
 
-              <div className="mt-8 flex flex-wrap gap-4">
-                <a
-                  href="#iletisim"
-                  className="inline-flex items-center gap-2 rounded-full bg-stone-900 px-6 py-3.5 text-sm font-medium text-white shadow-xl shadow-stone-300/30 transition hover:-translate-y-0.5"
-                >
-                  İletişime Geç
-                  <ArrowRight className="h-4 w-4" />
-                </a>
-                <a
-                  href="#hizmetler"
-                  className="inline-flex items-center rounded-full border border-stone-300 bg-white/90 px-6 py-3.5 text-sm font-medium shadow-sm backdrop-blur transition hover:-translate-y-0.5"
-                >
-                  Çalışma Alanları
-                </a>
-              </div>
+    <p className="mt-6 max-w-xl text-lg leading-8 text-stone-600">
+      Zeynep; bireyler, ilişkiler ve topluluklarla şiddetsiz iletişim temelli çalışmalar yürütür. Amaç yalnızca daha iyi konuşmak değil, daha derin duymak, daha sahici temas kurmak ve çatışmaları dönüştürücü bir alana çevirebilmektir.
+    </p>
 
-              <div className="mt-10 grid gap-3 sm:grid-cols-3">
-                {highlights.map((item) => (
-                  <div key={item} className="rounded-2xl border border-white/70 bg-white/70 px-4 py-4 text-sm text-stone-600 shadow-sm backdrop-blur">
-                    {item}
-                  </div>
-                ))}
-              </div>
-            </div>
+    <div className="mt-8 flex flex-wrap gap-4">
+      <a
+        href="#iletisim"
+        className="inline-flex items-center gap-2 rounded-full bg-stone-900 px-6 py-3.5 text-sm font-medium text-white shadow-xl shadow-stone-300/30 transition hover:-translate-y-0.5"
+      >
+        İletişime Geç
+        <ArrowRight className="h-4 w-4" />
+      </a>
 
-            <div className="lg:pl-6">
-              <div className="rounded-[2rem] border border-white/70 bg-white/80 p-4 shadow-2xl shadow-stone-300/20 backdrop-blur md:p-6">
-                <div className="rounded-[1.6rem] bg-gradient-to-br from-stone-900 via-stone-800 to-stone-700 p-8 text-white md:p-10">
-                  <p className="text-sm uppercase tracking-[0.24em] text-stone-300">Yaklaşım</p>
-                  <h2 className="mt-4 text-3xl font-semibold leading-tight md:text-4xl">
-                    Empati, açıklık ve ihtiyaç temelli temas
-                  </h2>
-                  <p className="mt-5 text-base leading-7 text-stone-300">
-                    Her görüşmede merkezde performans değil insanlık vardır: duygu, ihtiyaç, sınır, rica ve ilişki kalitesi.
-                  </p>
+      <a
+        href="#hizmetler"
+        className="inline-flex items-center rounded-full border border-stone-300 bg-white/90 px-6 py-3.5 text-sm font-medium shadow-sm backdrop-blur transition hover:-translate-y-0.5"
+      >
+        Çalışma Alanları
+      </a>
+    </div>
+  </div>
 
-                  <div className="mt-8 space-y-3">
-                    {principles.map((item) => (
-                      <div key={item} className="rounded-2xl border border-white/10 bg-white/10 px-4 py-3 text-sm text-stone-100 backdrop-blur">
-                        {item}
-                      </div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+</div>
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-6 py-8 md:py-10">
-        <div className="grid gap-4 rounded-[2rem] border border-stone-200/80 bg-white p-6 shadow-sm md:grid-cols-3 md:p-8">
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-stone-500">Kimin için</p>
-            <p className="mt-3 text-xl font-semibold">Bireyler, ilişkiler, ekipler ve topluluklar</p>
-          </div>
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-stone-500">Format</p>
-            <p className="mt-3 text-xl font-semibold">Online odaklı seanslar, atölyeler ve kolaylaştırıcılık</p>
-          </div>
-          <div>
-            <p className="text-sm uppercase tracking-[0.2em] text-stone-500">Niyet</p>
-            <p className="mt-3 text-xl font-semibold">Kopuş yerine temas, savunma yerine açıklık</p>
-          </div>
-        </div>
-      </section>
+   <section className="mx-auto max-w-7xl px-6 py-10 md:py-14">
+  <div className="grid gap-5 md:grid-cols-3">
+    
+    <div className="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
+      <p className="text-sm uppercase tracking-[0.24em] text-stone-500">
+        Kimin İçin
+      </p>
+      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-stone-900">
+        Bireyler, topluluklar ve organizasyonlar
+      </h3>
+      <p className="mt-4 text-base leading-7 text-stone-600">
+        Farklı ölçeklerde ilişki kurma, dinleme ve dönüşüm pratiği geliştirmek isteyenler için.
+      </p>
+    </div>
+
+    <div className="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
+      <p className="text-sm uppercase tracking-[0.24em] text-stone-500">
+        Format
+      </p>
+      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-stone-900">
+        Online odaklı seanslar, atölyeler ve kolaylaştırıcılık
+      </h3>
+      <p className="mt-4 text-base leading-7 text-stone-600">
+        Bire bir süreçler, grup çalışmaları ve öğrenme alanları ihtiyaca göre şekillenir.
+      </p>
+    </div>
+
+    <div className="rounded-[2rem] border border-stone-200 bg-white p-8 shadow-sm">
+      <p className="text-sm uppercase tracking-[0.24em] text-stone-500">
+        Niyet
+      </p>
+      <h3 className="mt-4 text-2xl font-semibold tracking-tight text-stone-900">
+        Kopuş yerine temas, savunma yerine açıklık
+      </h3>
+      <p className="mt-4 text-base leading-7 text-stone-600">
+        Daha dürüst, güvenli ve canlı ilişkiler için yeni bir iletişim zemini kurmak.
+      </p>
+    </div>
+
+  </div>
+</section>
 
       <section id="hakkinda" className="mx-auto max-w-7xl px-6 py-20 md:py-28">
         <div className="grid gap-10 md:grid-cols-[0.9fr_1.1fr] md:gap-16">
