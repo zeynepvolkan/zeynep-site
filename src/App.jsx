@@ -6,11 +6,10 @@ const BUBBLES = [
   { id: 1, label: "Topluluk kurma",                r: 60, color: "#fef3c7" },
   { id: 2, label: "Programlar",                    r: 52, color: "#d4ede4" },
   { id: 3, label: "Siddetsiz Iletisim Egitimi",    r: 76, color: "#fef3c7" },
-  { id: 4, label: "Aitlik Tasarimi",               r: 88, color: "#e8e4f0" },
-  { id: 5, label: "Iliski & Iletisim Atolyeleri",  r: 48, color: "#f5e6e0" },
-  { id: 6, label: "Iyi Olus Kamplari",             r: 80, color: "#e8e4f0" },
-  { id: 7, label: "Topluluk Sozlesmesi",           r: 68, color: "#e8e4d0" },
-  { id: 8, label: "Inziva Programlari",            r: 54, color: "#d4ede4" },
+  { id: 4, label: "Iliski & Iletisim Atolyeleri",  r: 48, color: "#f5e6e0" },
+  { id: 5, label: "Iyi Olus Kamplari",             r: 80, color: "#e8e4f0" },
+  { id: 6, label: "Topluluk Sozlesmesi",           r: 68, color: "#e8e4d0" },
+  { id: 7, label: "Inziva Programlari",            r: 54, color: "#d4ede4" },
 ];
 
 const BUBBLE_LABELS = [
@@ -18,7 +17,6 @@ const BUBBLE_LABELS = [
   "Topluluk kurma",
   "Programlar",
   "Şiddetsiz İletişim Eğitimi",
-  "Aitlik Tasarımı",
   "İlişki & İletişim Atölyeleri",
   "İyi Oluş Kampları",
   "Topluluk Sözleşmesi",
