@@ -184,7 +184,7 @@ export default function SiddetsizIletisimSitesi() {
     <div className="min-h-screen bg-[#f7f4ee] text-stone-800 selection:bg-stone-900 selection:text-white">
 
       {/* NAVBAR */}
-      <header className="bg-white px-6 py-4">
+      <header className="bg-white px-8 md:px-16 py-4">
         <div className="mx-auto max-w-7xl flex items-center justify-between">
           <div>
             <p className="text-base font-semibold tracking-tight text-stone-900">Zeynep Zümbül</p>
@@ -208,7 +208,7 @@ export default function SiddetsizIletisimSitesi() {
 
       {/* HERO */}
       <section className="bg-[#d4e8e1] py-16 md:py-24">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-8 md:px-16">
           <div className="grid items-center gap-12 lg:grid-cols-2">
 
             {/* SOL: METİN */}
@@ -252,7 +252,7 @@ export default function SiddetsizIletisimSitesi() {
 
       {/* ÇALIŞMA ALANLARI */}
       <section id="hizmetler" className="bg-[#fef9c3] py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-8 md:px-16">
           <h2 className="text-center text-4xl font-semibold tracking-tight text-[#1a2744] md:text-5xl">
             Çalışma Alanlarım
           </h2>
@@ -296,7 +296,7 @@ export default function SiddetsizIletisimSitesi() {
 
       {/* BALONCUK BÖLÜMÜ */}
       <section className="bg-[#f8f8f8] py-20 md:py-28 overflow-hidden">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-8 md:px-16">
           <div className="grid items-center gap-12 lg:grid-cols-2">
 
             {/* SOL: METİN */}
@@ -319,7 +319,7 @@ export default function SiddetsizIletisimSitesi() {
       </section>
 
       <section id="hakkinda" className="bg-[#e8d5c4] py-20 md:py-28">
-        <div className="mx-auto max-w-7xl px-6">
+        <div className="mx-auto max-w-7xl px-8 md:px-16">
           <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
 
             {/* SOL: METİN */}
@@ -397,7 +397,7 @@ export default function SiddetsizIletisimSitesi() {
       </section>
 
       {/* CTA BÖLÜMÜ */}
-      <section className="bg-[#78350f] py-20 md:py-28 px-6">
+      <section className="bg-[#78350f] py-20 md:py-28 px-8 md:px-16">
         <div className="mx-auto max-w-4xl">
 
           {/* Alıntı */}
@@ -432,7 +432,7 @@ export default function SiddetsizIletisimSitesi() {
         </div>
       </section>
 
-      <footer id="iletisim" className="bg-white px-6 py-16 md:py-20">
+      <footer id="iletisim" className="bg-white px-8 md:px-16 py-16 md:py-20">
         <div className="mx-auto max-w-xl flex flex-col items-center gap-8">
 
           {/* İsim */}
