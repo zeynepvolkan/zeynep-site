@@ -375,11 +375,15 @@ export default function SiddetsizIletisimSitesi() {
             "/akanresim3.JPG",
             "/akanresim4.JPG",
             "/akanresim5.jpeg",
+            "/akanresim7.jpeg",
+            "/akanresim8.jpeg",
             "/akanresim1.JPG",
             "/akanresim2.jpeg",
             "/akanresim3.JPG",
             "/akanresim4.JPG",
             "/akanresim5.jpeg",
+            "/akanresim7.jpeg",
+            "/akanresim8.jpeg",
           ].map((src, i) => (
             <img
               key={i}
