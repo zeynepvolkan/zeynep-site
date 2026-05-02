@@ -154,7 +154,7 @@ function GaleriSerit() {
   const photos = [...GALERI_PHOTOS, ...GALERI_PHOTOS];
 
   return (
-    <section className="bg-white py-10 overflow-hidden">
+    <section className="galeri-wrapper bg-white py-10">
       <div ref={trackRef} className="galeri-track">
         {photos.map((src, i) => (
           <img
