@@ -130,32 +130,43 @@ function FloatingBubbles() {
   );
 }
 
+const MC_U = 'MC_U_VALUE';       // Mailchimp embedded form'dan al
+const MC_ID = 'e17b3b6c8d';      // Audience ID
+const MC_SERVER = 'us5';
+
 function BultenModal({ onClose }) {
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [status, setStatus] = useState('idle');
   const [message, setMessage] = useState('');
 
-  const handleSubmit = useCallback(async (e) => {
+  const handleSubmit = useCallback((e) => {
     e.preventDefault();
     setStatus('loading');
-    try {
-      const res = await fetch('/api/subscribe', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email }),
-      });
-      const data = await res.json();
-      if (res.ok) {
+
+    const callbackName = `mc_cb_${Date.now()}`;
+    const url = `https://${MC_SERVER}.list-manage.com/subscribe/post-json?u=${MC_U}&id=${MC_ID}&EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
+
+    window[callbackName] = (data) => {
+      delete window[callbackName];
+      document.getElementById(callbackName)?.remove();
+      if (data.result === 'success') {
         setStatus('success');
-        setMessage(data.message);
       } else {
         setStatus('error');
-        setMessage(data.message);
+        setMessage(data.msg?.replace(/<[^>]+>/g, '') ?? 'Bir hata oluştu.');
       }
-    } catch {
+    };
+
+    const script = document.createElement('script');
+    script.id = callbackName;
+    script.src = url;
+    script.onerror = () => {
+      delete window[callbackName];
+      script.remove();
       setStatus('error');
-      setMessage('Sunucu hatası. Lütfen tekrar deneyin.');
-    }
+      setMessage('Bağlantı hatası. Lütfen tekrar deneyin.');
+    };
+    document.body.appendChild(script);
   }, [email]);
 
   return (
