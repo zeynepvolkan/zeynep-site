@@ -389,7 +389,8 @@ export default function SiddetsizIletisimSitesi() {
               key={i}
               src={src}
               alt=""
-              className="h-[280px] w-auto rounded-xl object-cover flex-shrink-0"
+              loading="eager"
+              className="galeri-foto h-[280px] w-auto rounded-xl object-cover flex-shrink-0"
               style={{ marginRight: 16 }}
             />
           ))}
@@ -397,7 +398,7 @@ export default function SiddetsizIletisimSitesi() {
       </section>
 
       {/* CTA BÖLÜMÜ */}
-      <section className="bg-[#78350f] py-20 md:py-28 px-8 md:px-16">
+      <section className="bg-[#4a7c6f] py-20 md:py-28 px-8 md:px-16">
         <div className="mx-auto max-w-4xl">
 
           {/* Alıntı */}
@@ -412,7 +413,7 @@ export default function SiddetsizIletisimSitesi() {
               <h3 className="text-3xl font-bold text-white leading-tight">Bir projen mi var?</h3>
               <a
                 href="#iletisim"
-                className="rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#78350f] transition hover:bg-white/90"
+                className="rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#4a7c6f] transition hover:bg-white/90"
               >
                 Benimle İletişime Geçebilirsin
               </a>
@@ -422,7 +423,7 @@ export default function SiddetsizIletisimSitesi() {
               <h3 className="text-3xl font-bold text-white leading-tight">Neler mi yazıyorum?</h3>
               <a
                 href="#bulten"
-                className="rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#78350f] transition hover:bg-white/90"
+                className="rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#4a7c6f] transition hover:bg-white/90"
               >
                 Bültene Katılabilirsin
               </a>

@@ -28,3 +28,8 @@ body {
 .marquee-track:hover {
   animation-play-state: paused;
 }
+
+.galeri-foto {
+  will-change: transform;
+  transform: translateZ(0);
+}
