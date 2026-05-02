@@ -14,38 +14,26 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-@-webkit-keyframes scroll {
-  0%   { -webkit-transform: translateX(0); }
-  100% { -webkit-transform: translateX(-50%); }
-}
-
-@keyframes scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }
 
 .galeri-wrapper {
   overflow: hidden;
-  -webkit-overflow-scrolling: touch;
 }
 
 .galeri-track {
   display: flex;
   width: max-content;
-  -webkit-animation: scroll 35s linear infinite;
-  animation: scroll 35s linear infinite;
-  animation-play-state: running !important;
-  -webkit-animation-play-state: running !important;
-  -webkit-transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  -webkit-perspective: 1000;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  animation: marquee 30s linear infinite;
 }
 
 .galeri-foto {
-  will-change: transform;
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-  image-rendering: -webkit-optimize-contrast;
+  height: 280px;
+  width: auto;
+  object-fit: cover;
+  border-radius: 12px;
+  margin-right: 16px;
+  flex-shrink: 0;
 }

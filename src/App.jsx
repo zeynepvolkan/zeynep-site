@@ -141,29 +141,18 @@ const GALERI_PHOTOS = [
 ];
 
 function GaleriSerit() {
-  const trackRef = useRef(null);
-
-  useEffect(() => {
-    const el = trackRef.current;
-    if (!el) return;
-    el.style.animation = "none";
-    void el.offsetHeight;
-    el.style.animation = "";
-  }, []);
-
   const photos = [...GALERI_PHOTOS, ...GALERI_PHOTOS];
 
   return (
     <section className="galeri-wrapper bg-white py-10">
-      <div ref={trackRef} className="galeri-track">
+      <div className="galeri-track">
         {photos.map((src, i) => (
           <img
             key={i}
             src={src}
             alt=""
             loading="eager"
-            className="galeri-foto h-[280px] w-auto rounded-xl object-cover flex-shrink-0"
-            style={{ marginRight: 16 }}
+            className="galeri-foto"
           />
         ))}
       </div>
