@@ -707,7 +707,7 @@ export default function SiddetsizIletisimSitesi() {
               <Instagram size={20} />
             </a>
             <a
-              href="mailto:zeynepzumbul@gmail.com"
+              href="mailto:hello@zeynepzumbul.com"
               className="flex h-11 w-11 items-center justify-center rounded-xl border border-stone-200 text-stone-900 transition hover:opacity-50"
             >
               <Mail size={20} />
