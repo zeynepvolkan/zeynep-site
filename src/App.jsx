@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef, useState } from "react";
+﻿import { useEffect, useRef, useState, useCallback } from "react";
 import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users } from "lucide-react";
 
 const BUBBLES = [
@@ -130,6 +130,84 @@ function FloatingBubbles() {
   );
 }
 
+function BultenModal({ onClose }) {
+  const [email, setEmail] = useState('');
+  const [status, setStatus] = useState('idle'); // idle | loading | success | error
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = useCallback(async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    try {
+      const res = await fetch('/api/subscribe', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setStatus('success');
+        setMessage(data.message);
+      } else {
+        setStatus('error');
+        setMessage(data.message);
+      }
+    } catch {
+      setStatus('error');
+      setMessage('Sunucu hatası. Lütfen tekrar deneyin.');
+    }
+  }, [email]);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-center justify-between mb-6">
+          <h2 className="text-xl font-bold text-stone-900">Bültene Abone Ol</h2>
+          <button
+            onClick={onClose}
+            className="text-stone-400 hover:text-stone-700 transition text-2xl leading-none"
+          >
+            &times;
+          </button>
+        </div>
+
+        {status === 'success' ? (
+          <p className="rounded-xl bg-green-50 p-4 text-sm text-green-700">
+            Teşekkürler! Bültene başarıyla abone oldunuz.
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              type="email"
+              required
+              value={email}
+              onChange={e => setEmail(e.target.value)}
+              placeholder="E-posta adresiniz"
+              className="w-full rounded-full border border-stone-300 px-5 py-3 text-sm outline-none focus:border-stone-500"
+            />
+            {status === 'error' && (
+              <p className="text-sm text-red-600">{message}</p>
+            )}
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="rounded-full bg-[#1a2744] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#243359] disabled:opacity-60"
+            >
+              {status === 'loading' ? 'Gönderiliyor...' : 'Abone Ol'}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
 const GALERI_PHOTOS = [
   "/akanresim1.webp",
   "/akanresim2.webp",
@@ -195,6 +273,8 @@ function GaleriSerit() {
 }
 
 export default function SiddetsizIletisimSitesi() {
+  const [showBulten, setShowBulten] = useState(false);
+
   const services = [
     {
       title: "Derin Bağlantı",
@@ -457,12 +537,12 @@ export default function SiddetsizIletisimSitesi() {
 
             <div className="rounded-[2rem] border-2 border-white/60 px-8 py-10 flex flex-col items-start gap-6">
               <h3 className="text-3xl font-bold text-white leading-tight">Neler mi yazıyorum?</h3>
-              <a
-                href="#bulten"
+              <button
+                onClick={() => setShowBulten(true)}
                 className="rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#78350f] transition hover:bg-white/90"
               >
                 Bültene Katılabilirsin
-              </a>
+              </button>
             </div>
 
           </div>
@@ -509,6 +589,8 @@ export default function SiddetsizIletisimSitesi() {
 
         </div>
       </footer>
+
+      {showBulten && <BultenModal onClose={() => setShowBulten(false)} />}
     </div>
   );
 }
