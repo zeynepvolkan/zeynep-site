@@ -220,6 +220,126 @@ function BultenModal({ onClose }) {
   );
 }
 
+const FORMSPREE_URL = "https://formspree.io/f/xjglkqgy";
+
+function IletisimModal({ onClose }) {
+  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
+  const [status, setStatus] = useState('idle');
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    if (status === 'success') {
+      const t = setTimeout(onClose, 3000);
+      return () => clearTimeout(t);
+    }
+  }, [status, onClose]);
+
+  const handleChange = (e) => {
+    setForm(f => ({ ...f, [e.target.name]: e.target.value }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setStatus('loading');
+    setError('');
+    try {
+      const res = await fetch(FORMSPREE_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+      });
+      if (res.ok) {
+        setStatus('success');
+      } else {
+        throw new Error();
+      }
+    } catch {
+      setStatus('error');
+      setError('Bir hata oluştu. Lütfen tekrar deneyin.');
+    }
+  };
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-lg rounded-2xl bg-white p-8 shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between mb-2">
+          <h2 className="text-xl font-bold text-stone-900">İletişime Geç</h2>
+          <button
+            onClick={onClose}
+            className="text-stone-400 hover:text-stone-700 transition text-2xl leading-none ml-4"
+          >
+            &times;
+          </button>
+        </div>
+        <p className="text-sm text-stone-500 mb-6">
+          Bir projen, sorun ya da işbirliği fikrin mi var? Mesajını bırak.
+        </p>
+
+        {status === 'success' ? (
+          <p className="rounded-xl bg-green-50 p-4 text-sm text-green-700">
+            Mesajınız iletildi! En kısa sürede dönüş yapacağım. 🙏
+          </p>
+        ) : (
+          <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+            <input
+              type="text"
+              name="name"
+              required
+              value={form.name}
+              onChange={handleChange}
+              placeholder="Ad Soyad"
+              className="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none focus:border-[#1a2744]"
+            />
+            <input
+              type="email"
+              name="email"
+              required
+              value={form.email}
+              onChange={handleChange}
+              placeholder="E-posta"
+              className="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none focus:border-[#1a2744]"
+            />
+            <input
+              type="text"
+              name="subject"
+              required
+              value={form.subject}
+              onChange={handleChange}
+              placeholder="Konu"
+              className="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none focus:border-[#1a2744]"
+            />
+            <textarea
+              name="message"
+              required
+              rows={4}
+              value={form.message}
+              onChange={handleChange}
+              placeholder="Mesajınız"
+              className="w-full rounded-xl border border-stone-300 px-4 py-3 text-sm outline-none focus:border-[#1a2744] resize-none"
+            />
+            {status === 'error' && (
+              <p className="text-sm text-red-600">{error}</p>
+            )}
+            <button
+              type="submit"
+              disabled={status === 'loading'}
+              className="rounded-full bg-[#1a2744] px-6 py-3 text-sm font-medium text-white transition hover:bg-[#243359] disabled:opacity-60"
+            >
+              {status === 'loading' ? 'Gönderiliyor...' : 'Gönder'}
+            </button>
+          </form>
+        )}
+      </div>
+    </div>
+  );
+}
+
 const GALERI_PHOTOS = [
   "/akanresim1.webp",
   "/akanresim2.webp",
@@ -286,6 +406,7 @@ function GaleriSerit() {
 
 export default function SiddetsizIletisimSitesi() {
   const [showBulten, setShowBulten] = useState(false);
+  const [showIletisim, setShowIletisim] = useState(false);
 
   const services = [
     {
@@ -460,12 +581,12 @@ export default function SiddetsizIletisimSitesi() {
               <h2 className="text-3xl font-semibold leading-tight tracking-tight text-[#1a2744] md:text-4xl">
                 Şunlardan biriyle mi ilgileniyorsunuz?
               </h2>
-              <a
-                href="#iletisim"
+              <button
+                onClick={() => setShowIletisim(true)}
                 className="mt-8 inline-block rounded-full bg-[#1a2744] px-6 py-3.5 text-sm font-medium text-white transition hover:bg-[#243359]"
               >
                 Benimle İletişime Geçebilirsin
-              </a>
+              </button>
             </div>
 
             {/* SAĞ: BALONCUKLAR */}
@@ -510,12 +631,12 @@ export default function SiddetsizIletisimSitesi() {
                 alt="Zeynep Zümbül"
                 className="w-full max-w-sm object-cover"
               />
-              <a
-                href="#iletisim"
+              <button
+                onClick={() => setShowIletisim(true)}
                 className="rounded-full border border-stone-400 bg-white px-6 py-3 text-sm font-medium text-stone-900 transition hover:bg-stone-50"
               >
                 Benimle İletişime Geçebilirsin
-              </a>
+              </button>
             </div>
 
           </div>
@@ -539,12 +660,12 @@ export default function SiddetsizIletisimSitesi() {
 
             <div className="rounded-[2rem] border-2 border-white/60 px-8 py-10 flex flex-col items-start gap-6">
               <h3 className="text-3xl font-bold text-white leading-tight">Bir projen mi var?</h3>
-              <a
-                href="#iletisim"
+              <button
+                onClick={() => setShowIletisim(true)}
                 className="rounded-full bg-white px-6 py-2.5 text-sm font-medium text-[#78350f] transition hover:bg-white/90"
               >
                 Benimle İletişime Geçebilirsin
-              </a>
+              </button>
             </div>
 
             <div className="rounded-[2rem] border-2 border-white/60 px-8 py-10 flex flex-col items-start gap-6">
@@ -603,6 +724,7 @@ export default function SiddetsizIletisimSitesi() {
       </footer>
 
       {showBulten && <BultenModal onClose={() => setShowBulten(false)} />}
+      {showIletisim && <IletisimModal onClose={() => setShowIletisim(false)} />}
     </div>
   );
 }
