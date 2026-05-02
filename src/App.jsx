@@ -1,4 +1,4 @@
-﻿import { useEffect, useRef } from "react";
+﻿import { useEffect, useRef, useState } from "react";
 import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users } from "lucide-react";
 
 const BUBBLES = [
@@ -142,17 +142,37 @@ const GALERI_PHOTOS = [
 ];
 
 function GaleriSerit() {
+  const [imagesReady, setImagesReady] = useState(false);
+
+  useEffect(() => {
+    Promise.all(
+      GALERI_PHOTOS.map(src => {
+        const img = new Image();
+        img.src = src;
+        return img.decode().catch(() => {});
+      })
+    ).then(() => setImagesReady(true));
+  }, []);
+
   const photos = [...GALERI_PHOTOS, ...GALERI_PHOTOS];
 
   return (
     <section className="galeri-wrapper bg-white py-10">
-      <div className="galeri-track">
+      <div
+        className="galeri-track"
+        style={{
+          animationPlayState: imagesReady ? "running" : "paused",
+          opacity: imagesReady ? 1 : 0,
+          transition: "opacity 0.3s",
+        }}
+      >
         {photos.map((src, i) => (
           <img
             key={i}
             src={src}
             alt=""
             loading="eager"
+            decoding="sync"
             className="galeri-foto"
           />
         ))}
