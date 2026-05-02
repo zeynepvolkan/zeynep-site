@@ -131,11 +131,12 @@ function FloatingBubbles() {
 }
 
 const GALERI_PHOTOS = [
-  "/akanresim1.JPG",
+  "/akanresim1.jpg",
   "/akanresim2.jpeg",
-  "/akanresim3.JPG",
-  "/akanresim4.JPG",
+  "/akanresim3.jpg",
+  "/akanresim4.jpg",
   "/akanresim5.jpeg",
+  "/akanresim6.jpg",
   "/akanresim7.jpeg",
   "/akanresim8.jpeg",
 ];
