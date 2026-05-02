@@ -130,9 +130,7 @@ function FloatingBubbles() {
   );
 }
 
-const MC_U = 'MC_U_VALUE';       // Mailchimp embedded form'dan al
-const MC_ID = 'e17b3b6c8d';      // Audience ID
-const MC_SERVER = 'us5';
+const MAILCHIMP_URL = "https://zeynepzumbul.us5.list-manage.com/subscribe/post-json?u=094ac66de559e740d735ea0f8&id=e17b3b6c8d&f_id=009ebeedf0";
 
 function BultenModal({ onClose }) {
   const [email, setEmail] = useState('');
@@ -144,7 +142,7 @@ function BultenModal({ onClose }) {
     setStatus('loading');
 
     const callbackName = `mc_cb_${Date.now()}`;
-    const url = `https://${MC_SERVER}.list-manage.com/subscribe/post-json?u=${MC_U}&id=${MC_ID}&EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
+    const url = `${MAILCHIMP_URL}&EMAIL=${encodeURIComponent(email)}&c=${callbackName}`;
 
     window[callbackName] = (data) => {
       delete window[callbackName];
@@ -171,26 +169,29 @@ function BultenModal({ onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4"
+      className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 px-4"
       onClick={onClose}
     >
       <div
         className="w-full max-w-md rounded-2xl bg-white p-8 shadow-2xl"
         onClick={e => e.stopPropagation()}
       >
-        <div className="flex items-center justify-between mb-6">
+        <div className="flex items-start justify-between mb-2">
           <h2 className="text-xl font-bold text-stone-900">Bültene Abone Ol</h2>
           <button
             onClick={onClose}
-            className="text-stone-400 hover:text-stone-700 transition text-2xl leading-none"
+            className="text-stone-400 hover:text-stone-700 transition text-2xl leading-none ml-4"
           >
             &times;
           </button>
         </div>
+        <p className="text-sm text-stone-500 mb-6">
+          Zeynep'in yazılarından haberdar olmak için e-postanı bırak.
+        </p>
 
         {status === 'success' ? (
           <p className="rounded-xl bg-green-50 p-4 text-sm text-green-700">
-            Teşekkürler! Bültene başarıyla abone oldunuz.
+            Teşekkürler! Bültene başarıyla abone oldunuz. 🎉
           </p>
         ) : (
           <form onSubmit={handleSubmit} className="flex flex-col gap-4">
