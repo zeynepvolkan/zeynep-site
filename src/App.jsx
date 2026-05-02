@@ -131,27 +131,36 @@ function FloatingBubbles() {
 }
 
 const GALERI_PHOTOS = [
-  "/akanresim1.jpg",
-  "/akanresim2.jpeg",
-  "/akanresim3.jpg",
-  "/akanresim4.jpg",
-  "/akanresim5.jpeg",
-  "/akanresim6.jpg",
-  "/akanresim7.jpeg",
-  "/akanresim8.jpeg",
+  "/akanresim1.webp",
+  "/akanresim2.webp",
+  "/akanresim3.webp",
+  "/akanresim4.webp",
+  "/akanresim5.webp",
+  "/akanresim6.webp",
+  "/akanresim7.webp",
+  "/akanresim8.webp",
 ];
 
 function GaleriSerit() {
   const [imagesReady, setImagesReady] = useState(false);
 
   useEffect(() => {
+    let mounted = true;
+
     Promise.all(
-      GALERI_PHOTOS.map(src => {
-        const img = new Image();
-        img.src = src;
-        return img.decode().catch(() => {});
-      })
-    ).then(() => setImagesReady(true));
+      GALERI_PHOTOS.map(src =>
+        new Promise(resolve => {
+          const img = new Image();
+          img.onload = () => resolve(true);
+          img.onerror = () => resolve(false);
+          img.src = src;
+        })
+      )
+    ).then(() => {
+      if (mounted) setImagesReady(true);
+    });
+
+    return () => { mounted = false; };
   }, []);
 
   const photos = [...GALERI_PHOTOS, ...GALERI_PHOTOS];
@@ -171,9 +180,13 @@ function GaleriSerit() {
             key={i}
             src={src}
             alt=""
+            width="400"
+            height="280"
             loading="eager"
             decoding="sync"
             className="galeri-foto"
+            style={{ width: "auto", height: "280px", objectFit: "cover" }}
+            onError={e => { e.currentTarget.style.display = "none"; }}
           />
         ))}
       </div>
