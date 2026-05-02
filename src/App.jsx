@@ -130,6 +130,47 @@ function FloatingBubbles() {
   );
 }
 
+const GALERI_PHOTOS = [
+  "/akanresim1.JPG",
+  "/akanresim2.jpeg",
+  "/akanresim3.JPG",
+  "/akanresim4.JPG",
+  "/akanresim5.jpeg",
+  "/akanresim7.jpeg",
+  "/akanresim8.jpeg",
+];
+
+function GaleriSerit() {
+  const trackRef = useRef(null);
+
+  useEffect(() => {
+    const el = trackRef.current;
+    if (!el) return;
+    el.style.animation = "none";
+    void el.offsetHeight;
+    el.style.animation = "";
+  }, []);
+
+  const photos = [...GALERI_PHOTOS, ...GALERI_PHOTOS];
+
+  return (
+    <section className="bg-white py-10 overflow-hidden">
+      <div ref={trackRef} className="galeri-track">
+        {photos.map((src, i) => (
+          <img
+            key={i}
+            src={src}
+            alt=""
+            loading="eager"
+            className="galeri-foto h-[280px] w-auto rounded-xl object-cover flex-shrink-0"
+            style={{ marginRight: 16 }}
+          />
+        ))}
+      </div>
+    </section>
+  );
+}
+
 export default function SiddetsizIletisimSitesi() {
   const services = [
     {
@@ -367,35 +408,7 @@ export default function SiddetsizIletisimSitesi() {
       </section>
 
       {/* KAYAN FOTOĞRAF GALERİSİ */}
-      <section className="bg-white py-10 overflow-hidden">
-        <div className="marquee-track">
-          {[
-            "/akanresim1.JPG",
-            "/akanresim2.jpeg",
-            "/akanresim3.JPG",
-            "/akanresim4.JPG",
-            "/akanresim5.jpeg",
-            "/akanresim7.jpeg",
-            "/akanresim8.jpeg",
-            "/akanresim1.JPG",
-            "/akanresim2.jpeg",
-            "/akanresim3.JPG",
-            "/akanresim4.JPG",
-            "/akanresim5.jpeg",
-            "/akanresim7.jpeg",
-            "/akanresim8.jpeg",
-          ].map((src, i) => (
-            <img
-              key={i}
-              src={src}
-              alt=""
-              loading="eager"
-              className="galeri-foto h-[280px] w-auto rounded-xl object-cover flex-shrink-0"
-              style={{ marginRight: 16 }}
-            />
-          ))}
-        </div>
-      </section>
+      <GaleriSerit />
 
       {/* CTA BÖLÜMÜ */}
       <section className="bg-[#78350f] py-20 md:py-28 px-8 md:px-16">
