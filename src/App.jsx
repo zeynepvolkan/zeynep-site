@@ -616,7 +616,7 @@ export default function SiddetsizIletisimSitesi() {
                   2018'de bu soruları pratiğe dökmek için yaratıcı topluluk odaklı inovasyon platformu olan Nexlab'i kurdum. Birlikte öğrenme ve üretme süreçleri kurguladım, girişimlere Şiddetsiz İletişimden ilhamla iletişim eğitimleri verdim. Nexlab, bugün yaptığım işin temellerini attığım yerdi.
                 </p>
                 <p>
-                  Ardından Müzikist'te topluluk ve projeler koordinatörü olarak gönüllük programları, topluluk etkinlikleri ve doğa-inziva kampları üzerine çalıştım. Şiddetsiz İletişim Festivali'nde organizasyon ekibinin bir parçası oldum ve o deneyim, bu yolda olmak istediğimi bir kez daha doğruladı.
+                  Ardından Müzikist'te topluluk ve projeler koordinatörü olarak gönüllülük programları, topluluk etkinlikleri ve doğa-inziva kampları üzerine çalıştım. Şiddetsiz İletişim Festivali'nde organizasyon ekibinin bir parçası oldum ve o deneyim, bu yolda olmak istediğimi bir kez daha doğruladı.
                 </p>
                 <p>
                   Bugün kolaylaştırıcılık, topluluk tasarımı, öğrenme tasarımı ve derin dinleme alanlarında çalışıyorum. Odağım hep aynı: iletişimi açık, ilişkileri derin, toplulukları canlı kılmak.
