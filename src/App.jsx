@@ -1,5 +1,6 @@
 ﻿import { useEffect, useRef, useState, useCallback } from "react";
-import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users, Calendar, Tag, ChevronRight, X, Menu } from "lucide-react";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users, Calendar, Tag, ChevronRight, X, Menu, ArrowLeft } from "lucide-react";
 
 const BUBBLES = [
   { id: 0, label: "Ekip ici diyalog",             r: 70, color: "#f5e6e0" },
@@ -454,26 +455,25 @@ function BlogPostModal({ post, onClose }) {
   );
 }
 
-function BlogBolumu() {
+function BlogPage() {
   const [activePost, setActivePost] = useState(null);
 
   return (
-    <section id="blog" className="bg-[#f7f4ee] py-20 md:py-28">
-      <div className="mx-auto max-w-7xl px-8 md:px-16">
+    <div className="min-h-screen bg-[#f7f4ee] text-stone-800">
+      <BlogNavbar />
+      <main className="mx-auto max-w-7xl px-8 md:px-16 py-20 md:py-28">
 
-        <div className="flex items-end justify-between mb-12">
-          <div>
-            <h2 className="text-4xl font-semibold tracking-tight text-[#1a2744] md:text-5xl">
-              Blog
-            </h2>
-            <p className="mt-3 text-base text-stone-500">
-              Düşünceler, deneyimler ve notlar.
-            </p>
-          </div>
+        <div className="mb-12">
+          <h1 className="text-4xl font-semibold tracking-tight text-[#1a2744] md:text-5xl">
+            Blog
+          </h1>
+          <p className="mt-3 text-base text-stone-500">
+            Düşünceler, deneyimler ve notlar.
+          </p>
         </div>
 
         {BLOG_POSTS.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-stone-200 py-20 text-center">
+          <div className="rounded-2xl border-2 border-dashed border-stone-200 py-24 text-center">
             <p className="text-stone-400 text-base">Yakında yazılar burada olacak.</p>
           </div>
         ) : (
@@ -504,16 +504,42 @@ function BlogBolumu() {
             ))}
           </div>
         )}
-      </div>
+      </main>
 
       {activePost && (
         <BlogPostModal post={activePost} onClose={() => setActivePost(null)} />
       )}
-    </section>
+    </div>
   );
 }
 
-export default function SiddetsizIletisimSitesi() {
+function BlogNavbar() {
+  return (
+    <header className="bg-white px-8 md:px-16 py-4 border-b border-stone-100">
+      <div className="mx-auto max-w-7xl flex items-center justify-between">
+        <Link to="/" className="group flex items-center gap-2 text-sm text-stone-500 hover:text-stone-900 transition">
+          <ArrowLeft size={16} className="group-hover:-translate-x-0.5 transition-transform" />
+          Ana Sayfa
+        </Link>
+        <div className="text-right">
+          <p className="text-base font-semibold tracking-tight text-stone-900">Zeynep Zümbül</p>
+          <p className="text-xs text-stone-500 mt-0.5">Blog</p>
+        </div>
+      </div>
+    </header>
+  );
+}
+
+export default function App() {
+  return (
+    <Routes>
+      <Route path="/" element={<SiddetsizIletisimSitesi />} />
+      <Route path="/blog" element={<BlogPage />} />
+    </Routes>
+  );
+}
+
+function SiddetsizIletisimSitesi() {
   const [showBulten, setShowBulten] = useState(false);
   const [showIletisim, setShowIletisim] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -580,10 +606,10 @@ export default function SiddetsizIletisimSitesi() {
           <div className="flex items-center gap-4">
             {/* Masaüstü nav */}
             <nav className="hidden md:flex items-center gap-7 text-sm text-stone-600">
-              <a href="#hakkinda" className="transition hover:text-stone-900">Hakkımda</a>
-              <a href="#hizmetler" className="transition hover:text-stone-900">Çalışma Alanları</a>
-              <a href="#blog" className="transition hover:text-stone-900">Blog</a>
-              <a href="#iletisim" className="transition hover:text-stone-900">İletişim</a>
+              <a href="/#hakkinda" className="transition hover:text-stone-900">Hakkımda</a>
+              <a href="/#hizmetler" className="transition hover:text-stone-900">Çalışma Alanları</a>
+              <Link to="/blog" className="transition hover:text-stone-900">Blog</Link>
+              <a href="/#iletisim" className="transition hover:text-stone-900">İletişim</a>
             </nav>
             <a
               href="#iletisim"
@@ -606,35 +632,35 @@ export default function SiddetsizIletisimSitesi() {
         {mobileMenuOpen && (
           <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-stone-100 shadow-lg px-8 py-6 flex flex-col gap-5">
             <a
-              href="#hakkinda"
+              href="/#hakkinda"
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
             >
               Hakkımda
             </a>
             <a
-              href="#hizmetler"
+              href="/#hizmetler"
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
             >
               Çalışma Alanları
             </a>
-            <a
-              href="#blog"
+            <Link
+              to="/blog"
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
             >
               Blog
-            </a>
+            </Link>
             <a
-              href="#iletisim"
+              href="/#iletisim"
               onClick={() => setMobileMenuOpen(false)}
               className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
             >
               İletişim
             </a>
             <a
-              href="#iletisim"
+              href="/#iletisim"
               onClick={() => setMobileMenuOpen(false)}
               className="mt-1 rounded-full bg-[#1a2744] px-5 py-3 text-sm font-medium text-white text-center transition hover:bg-[#243359]"
             >
@@ -806,9 +832,6 @@ export default function SiddetsizIletisimSitesi() {
 
       {/* KAYAN FOTOĞRAF GALERİSİ */}
       <GaleriSerit />
-
-      {/* BLOG BÖLÜMÜ */}
-      <BlogBolumu />
 
       {/* CTA BÖLÜMÜ */}
       <section className="bg-[#78350f] py-20 md:py-28 px-8 md:px-16">
