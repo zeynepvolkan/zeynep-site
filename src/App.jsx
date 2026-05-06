@@ -134,27 +134,7 @@ function FloatingBubbles() {
 // BLOG YAZILARI
 // Yeni yazı eklemek için bu diziye yeni bir obje ekle.
 // ──────────────────────────────────────────────────────────────────
-const BLOG_POSTS = [
-  {
-    id: 1,
-    title: "Gerçekten Dinlemek Ne Demektir?",
-    date: "6 Mayıs 2026",
-    category: "İletişim",
-    excerpt:
-      "Birinin söylediklerini duyarken aslında ne kadar orada olduğumuzu soruyorum kendime. Çoğu zaman dinliyor gibi görünürüz; ama zihnimiz çoktan bir sonraki cümleyi kuruyordur.",
-    content: `Birinin söylediklerini duyarken aslında ne kadar orada olduğumuzu soruyorum kendime. Çoğu zaman dinliyor gibi görünürüz; ama zihnimiz çoktan bir sonraki cümleyi kuruyordur.
-
-Şiddetsiz İletişim'de "empatiyle dinlemek" dediğimizde kastımız budur: karşıdaki kişinin söylediklerine değil, söylemek istediklerine kulak vermek. Kelimelerinin arkasındaki duyguya, oradan da ihtiyaca ulaşmak.
-
-Bu çok daha zor bir şey. Çünkü bizi alışkındığımız kalıpların dışına çıkarıyor. Cevap vermek yerine oturmayı, çözmek yerine sadece "buradayım" demeyi gerektiriyor.
-
-Ama tam da bu yüzden dönüştürücü.
-
-Gerçekten dinlenildiğinde bir insan ne hisseder? Çoğu zaman söze bile ihtiyaç duymaz. Sadece görülmüş olmanın hafifliği yeter. İşte o an, bağ kurulur.
-
-Dinlemeyi bir beceri olarak öğrenmek mümkün. Ama önce onu bir seçim olarak yapmak gerekiyor.`,
-  },
-];
+const BLOG_POSTS = [];
 
 const MAILCHIMP_URL = "https://zeynepzumbul.us5.list-manage.com/subscribe/post-json?u=094ac66de559e740d735ea0f8&id=e17b3b6c8d&f_id=009ebeedf0";
 
