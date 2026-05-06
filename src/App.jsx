@@ -1,5 +1,5 @@
 ﻿import { useEffect, useRef, useState, useCallback } from "react";
-import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users, Calendar, Tag, ChevronRight, X } from "lucide-react";
+import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users, Calendar, Tag, ChevronRight, X, Menu } from "lucide-react";
 
 const BUBBLES = [
   { id: 0, label: "Ekip ici diyalog",             r: 70, color: "#f5e6e0" },
@@ -516,6 +516,7 @@ function BlogBolumu() {
 export default function SiddetsizIletisimSitesi() {
   const [showBulten, setShowBulten] = useState(false);
   const [showIletisim, setShowIletisim] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const services = [
     {
@@ -570,13 +571,14 @@ export default function SiddetsizIletisimSitesi() {
     <div className="min-h-screen bg-[#f7f4ee] text-stone-800 selection:bg-stone-900 selection:text-white">
 
       {/* NAVBAR */}
-      <header className="bg-white px-8 md:px-16 py-4">
+      <header className="bg-white px-8 md:px-16 py-4 relative z-40">
         <div className="mx-auto max-w-7xl flex items-center justify-between">
           <div>
             <p className="text-base font-semibold tracking-tight text-stone-900">Zeynep Zümbül</p>
             <p className="text-xs text-stone-500 mt-0.5">Topluluk Mimarı · Kolaylaştırıcı · Öğrenme Tasarımcısı</p>
           </div>
-          <div className="flex items-center gap-7">
+          <div className="flex items-center gap-4">
+            {/* Masaüstü nav */}
             <nav className="hidden md:flex items-center gap-7 text-sm text-stone-600">
               <a href="#hakkinda" className="transition hover:text-stone-900">Hakkımda</a>
               <a href="#hizmetler" className="transition hover:text-stone-900">Çalışma Alanları</a>
@@ -585,12 +587,61 @@ export default function SiddetsizIletisimSitesi() {
             </nav>
             <a
               href="#iletisim"
-              className="rounded-full bg-[#1a2744] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#243359]"
+              className="hidden md:inline-flex rounded-full bg-[#1a2744] px-5 py-2.5 text-sm font-medium text-white transition hover:bg-[#243359]"
+            >
+              Tanışma Görüşmesi
+            </a>
+            {/* Hamburger butonu — sadece mobil */}
+            <button
+              onClick={() => setMobileMenuOpen(o => !o)}
+              className="md:hidden flex h-10 w-10 items-center justify-center rounded-xl border border-stone-200 text-stone-700 transition hover:bg-stone-50"
+              aria-label="Menüyü aç"
+            >
+              {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobil menü */}
+        {mobileMenuOpen && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white border-t border-stone-100 shadow-lg px-8 py-6 flex flex-col gap-5">
+            <a
+              href="#hakkinda"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
+            >
+              Hakkımda
+            </a>
+            <a
+              href="#hizmetler"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
+            >
+              Çalışma Alanları
+            </a>
+            <a
+              href="#blog"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
+            >
+              Blog
+            </a>
+            <a
+              href="#iletisim"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
+            >
+              İletişim
+            </a>
+            <a
+              href="#iletisim"
+              onClick={() => setMobileMenuOpen(false)}
+              className="mt-1 rounded-full bg-[#1a2744] px-5 py-3 text-sm font-medium text-white text-center transition hover:bg-[#243359]"
             >
               Tanışma Görüşmesi
             </a>
           </div>
-        </div>
+        )}
       </header>
 
       {/* HERO */}
