@@ -1,5 +1,5 @@
 ﻿import { useEffect, useRef, useState, useCallback } from "react";
-import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users } from "lucide-react";
+import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users, Calendar, Tag, ChevronRight, X } from "lucide-react";
 
 const BUBBLES = [
   { id: 0, label: "Ekip ici diyalog",             r: 70, color: "#f5e6e0" },
@@ -129,6 +129,32 @@ function FloatingBubbles() {
     </div>
   );
 }
+
+// ──────────────────────────────────────────────────────────────────
+// BLOG YAZILARI
+// Yeni yazı eklemek için bu diziye yeni bir obje ekle.
+// ──────────────────────────────────────────────────────────────────
+const BLOG_POSTS = [
+  {
+    id: 1,
+    title: "Gerçekten Dinlemek Ne Demektir?",
+    date: "6 Mayıs 2026",
+    category: "İletişim",
+    excerpt:
+      "Birinin söylediklerini duyarken aslında ne kadar orada olduğumuzu soruyorum kendime. Çoğu zaman dinliyor gibi görünürüz; ama zihnimiz çoktan bir sonraki cümleyi kuruyordur.",
+    content: `Birinin söylediklerini duyarken aslında ne kadar orada olduğumuzu soruyorum kendime. Çoğu zaman dinliyor gibi görünürüz; ama zihnimiz çoktan bir sonraki cümleyi kuruyordur.
+
+Şiddetsiz İletişim'de "empatiyle dinlemek" dediğimizde kastımız budur: karşıdaki kişinin söylediklerine değil, söylemek istediklerine kulak vermek. Kelimelerinin arkasındaki duyguya, oradan da ihtiyaca ulaşmak.
+
+Bu çok daha zor bir şey. Çünkü bizi alışkındığımız kalıpların dışına çıkarıyor. Cevap vermek yerine oturmayı, çözmek yerine sadece "buradayım" demeyi gerektiriyor.
+
+Ama tam da bu yüzden dönüştürücü.
+
+Gerçekten dinlenildiğinde bir insan ne hisseder? Çoğu zaman söze bile ihtiyaç duymaz. Sadece görülmüş olmanın hafifliği yeter. İşte o an, bağ kurulur.
+
+Dinlemeyi bir beceri olarak öğrenmek mümkün. Ama önce onu bir seçim olarak yapmak gerekiyor.`,
+  },
+];
 
 const MAILCHIMP_URL = "https://zeynepzumbul.us5.list-manage.com/subscribe/post-json?u=094ac66de559e740d735ea0f8&id=e17b3b6c8d&f_id=009ebeedf0";
 
@@ -404,6 +430,109 @@ function GaleriSerit() {
   );
 }
 
+function BlogPostModal({ post, onClose }) {
+  useEffect(() => {
+    const handleKey = (e) => { if (e.key === "Escape") onClose(); };
+    document.addEventListener("keydown", handleKey);
+    return () => document.removeEventListener("keydown", handleKey);
+  }, [onClose]);
+
+  const paragraphs = post.content.split("\n\n").filter(Boolean);
+
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 py-10 overflow-y-auto"
+      onClick={onClose}
+    >
+      <div
+        className="w-full max-w-2xl rounded-2xl bg-white p-8 md:p-12 shadow-2xl"
+        onClick={e => e.stopPropagation()}
+      >
+        <div className="flex items-start justify-between gap-4 mb-6">
+          <div>
+            <span className="inline-block rounded-full bg-[#d4e8e1] px-3 py-1 text-xs font-medium text-[#1a2744] mb-3">
+              {post.category}
+            </span>
+            <h2 className="text-2xl font-bold text-stone-900 leading-snug">{post.title}</h2>
+            <p className="mt-2 text-sm text-stone-400">{post.date}</p>
+          </div>
+          <button
+            onClick={onClose}
+            className="flex-shrink-0 flex h-9 w-9 items-center justify-center rounded-full border border-stone-200 text-stone-500 hover:text-stone-900 transition"
+          >
+            <X size={18} />
+          </button>
+        </div>
+        <hr className="border-stone-100 mb-8" />
+        <div className="space-y-5 text-base leading-8 text-stone-700">
+          {paragraphs.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+}
+
+function BlogBolumu() {
+  const [activePost, setActivePost] = useState(null);
+
+  return (
+    <section id="blog" className="bg-[#f7f4ee] py-20 md:py-28">
+      <div className="mx-auto max-w-7xl px-8 md:px-16">
+
+        <div className="flex items-end justify-between mb-12">
+          <div>
+            <h2 className="text-4xl font-semibold tracking-tight text-[#1a2744] md:text-5xl">
+              Blog
+            </h2>
+            <p className="mt-3 text-base text-stone-500">
+              Düşünceler, deneyimler ve notlar.
+            </p>
+          </div>
+        </div>
+
+        {BLOG_POSTS.length === 0 ? (
+          <div className="rounded-2xl border-2 border-dashed border-stone-200 py-20 text-center">
+            <p className="text-stone-400 text-base">Yakında yazılar burada olacak.</p>
+          </div>
+        ) : (
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+            {BLOG_POSTS.map(post => (
+              <article
+                key={post.id}
+                className="group flex flex-col rounded-2xl bg-white p-7 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
+                onClick={() => setActivePost(post)}
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="rounded-full bg-[#d4e8e1] px-3 py-1 text-xs font-medium text-[#1a2744]">
+                    {post.category}
+                  </span>
+                  <span className="text-xs text-stone-400">{post.date}</span>
+                </div>
+                <h3 className="text-lg font-semibold text-stone-900 leading-snug mb-3 group-hover:text-[#1a2744] transition-colors">
+                  {post.title}
+                </h3>
+                <p className="text-sm leading-7 text-stone-500 flex-1">
+                  {post.excerpt}
+                </p>
+                <div className="mt-6 flex items-center gap-1.5 text-sm font-medium text-[#1a2744]">
+                  <span>Devamını oku</span>
+                  <ChevronRight size={15} className="group-hover:translate-x-1 transition-transform" />
+                </div>
+              </article>
+            ))}
+          </div>
+        )}
+      </div>
+
+      {activePost && (
+        <BlogPostModal post={activePost} onClose={() => setActivePost(null)} />
+      )}
+    </section>
+  );
+}
+
 export default function SiddetsizIletisimSitesi() {
   const [showBulten, setShowBulten] = useState(false);
   const [showIletisim, setShowIletisim] = useState(false);
@@ -471,6 +600,7 @@ export default function SiddetsizIletisimSitesi() {
             <nav className="hidden md:flex items-center gap-7 text-sm text-stone-600">
               <a href="#hakkinda" className="transition hover:text-stone-900">Hakkımda</a>
               <a href="#hizmetler" className="transition hover:text-stone-900">Çalışma Alanları</a>
+              <a href="#blog" className="transition hover:text-stone-900">Blog</a>
               <a href="#iletisim" className="transition hover:text-stone-900">İletişim</a>
             </nav>
             <a
@@ -645,6 +775,9 @@ export default function SiddetsizIletisimSitesi() {
 
       {/* KAYAN FOTOĞRAF GALERİSİ */}
       <GaleriSerit />
+
+      {/* BLOG BÖLÜMÜ */}
+      <BlogBolumu />
 
       {/* CTA BÖLÜMÜ */}
       <section className="bg-[#78350f] py-20 md:py-28 px-8 md:px-16">
