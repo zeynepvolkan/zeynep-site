@@ -1,6 +1,7 @@
 ﻿import { useEffect, useRef, useState, useCallback } from "react";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
 import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users, Calendar, Tag, ChevronRight, X, Menu, ArrowLeft } from "lucide-react";
+import NvcKartlari from "./NvcKartlari.jsx";
 
 const BUBBLES = [
   { id: 0, label: "Ekip ici diyalog",             r: 70, color: "#f5e6e0" },
@@ -530,12 +531,28 @@ function BlogNavbar() {
   );
 }
 
+function Analytics() {
+  const location = useLocation();
+  useEffect(() => {
+    if (typeof window.gtag !== "function") return;
+    window.gtag("event", "page_view", {
+      page_path: location.pathname + location.search,
+      page_title: document.title,
+    });
+  }, [location]);
+  return null;
+}
+
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<SiddetsizIletisimSitesi />} />
-      <Route path="/blog" element={<BlogPage />} />
-    </Routes>
+    <>
+      <Analytics />
+      <Routes>
+        <Route path="/" element={<SiddetsizIletisimSitesi />} />
+        <Route path="/blog" element={<BlogPage />} />
+        <Route path="/nvc-kartlari" element={<NvcKartlari />} />
+      </Routes>
+    </>
   );
 }
 
@@ -609,6 +626,7 @@ function SiddetsizIletisimSitesi() {
               <a href="/#hakkinda" className="transition hover:text-stone-900">Hakkımda</a>
               <a href="/#hizmetler" className="transition hover:text-stone-900">Çalışma Alanları</a>
               <Link to="/blog" className="transition hover:text-stone-900">Blog</Link>
+              <Link to="/nvc-kartlari" className="transition hover:text-stone-900">İhtiyaç Kartları</Link>
               <a href="/#iletisim" className="transition hover:text-stone-900">İletişim</a>
             </nav>
             <a
@@ -651,6 +669,13 @@ function SiddetsizIletisimSitesi() {
               className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
             >
               Blog
+            </Link>
+            <Link
+              to="/nvc-kartlari"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-sm font-medium text-stone-700 hover:text-stone-900 transition"
+            >
+              İhtiyaç Kartları
             </Link>
             <a
               href="/#iletisim"
