@@ -294,7 +294,7 @@ const NVC_CSS = `
     position: absolute; top: 13px; right: 15px;
     font-family: 'DM Sans', sans-serif;
     font-size: 0.6rem; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--nvc-ink3);
+    color: var(--nvc-ink3);
     font-weight: 600; opacity: 0;
     transition: opacity 0.5s 0.2s ease;
   }
@@ -623,7 +623,7 @@ export default function NvcKartlari() {
                 <div className="nvc-card-face" style={cardFaceStyle}>
                   <div className="nvc-card-bar" style={cardBarStyle} />
                   <div className="nvc-card-category">
-                    {current?.cat[lang] ?? ""}
+                    {current?.cat[lang]?.toLocaleUpperCase(lang === "tr" ? "tr-TR" : "en-US") ?? ""}
                   </div>
                   <div className="nvc-card-glyph">
                     {current ? current.g : "◈"}
