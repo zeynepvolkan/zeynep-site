@@ -1,5 +1,5 @@
 ﻿import { useEffect, useRef, useState, useCallback } from "react";
-import { Routes, Route, Link, useNavigate, useLocation } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, useLocation, useParams } from "react-router-dom";
 import { ArrowRight, BookOpen, Globe, Heart, Instagram, Lightbulb, Linkedin, Mail, MessageCircleHeart, Users, Calendar, Tag, ChevronRight, X, Menu, ArrowLeft } from "lucide-react";
 import NvcKartlari from "./NvcKartlari.jsx";
 
@@ -136,7 +136,34 @@ function FloatingBubbles() {
 // BLOG YAZILARI
 // Yeni yazı eklemek için bu diziye yeni bir obje ekle.
 // ──────────────────────────────────────────────────────────────────
-const BLOG_POSTS = [];
+const BLOG_POSTS = [{
+  id: "ethos-bir-toplulugun-karakteri-nasil-olusur",
+  title: "Ethos: Bir Topluluğun Karakteri Nasıl Oluşur?",
+  category: "Topluluk",
+  date: "16 Kasım 2026",
+  author: "Zeynep Zümbül",
+  image: "/blog/ethos-topluluk.jpg",
+  excerpt: "Bir topluluğu bir araya getiren şey ne? Peki insanları bir arada tutan ne? Ethos kavramıyla toplulukların karakterine bakıyoruz.",
+  description: "Bir topluluğun karakteri nasıl oluşur? Ethos kavramı üzerinden topluluk kültürünü, ortak değerleri ve birlikte var olma biçimlerimizi keşfediyoruz.",
+  sections: [
+    { type: "p", text: "Bir topluluğu bir araya getiren şey ne? Ortak bir ilgi, bir amaç ya da birlikte üretme isteği… Peki insanları bir arada tutan ne?" },
+    { type: "p", text: "Jono Bacon, The Art of Community kitabında toplulukları; ilişkiler, ortak değerler ve deneyimler aracılığıyla gelişen canlı yapılar olarak ele alıyor. Kitabı okurken beni düşündüren kavramlardan biri de ethos oldu." },
+    { type: "h2", text: "Ethos: Birlikte var olma biçimimiz" },
+    { type: "p", text: "Ethos; karakter, alışkanlık ve yaşam biçimiyle ilişkilendirilen bir kavram. Topluluklar açısından baktığımızda, ortak değerlerin, davranışların ve ilişki kurma biçimlerinin zaman içinde oluşturduğu kültürü anlatıyor." },
+    { type: "p", text: "Bir topluluk düşünelim. Herkesin önemsediği bazı şeyler var: dayanışma, paylaşım, birlikte üretmek… Peki bunlar bir araya geldiğimizde nasıl ortaya çıkıyor? Birbirimizle nasıl konuşuyoruz, işleri nasıl paylaşıyoruz, bir karar alırken nasıl ilerliyoruz? İşte bütün bu alışkanlıklar, davranışlar ve ilişkiler topluluğun ethos'unu, yani topluluğun karakterini oluşturuyor." },
+    { type: "h2", text: "Kültür, gündelik karşılaşmalarda oluşur" },
+    { type: "p", text: "Bir toplantıda birbirimizi nasıl dinlediğimiz, farklı fikirlere ne kadar alan açtığımız, ortak sorumlulukları nasıl üstlendiğimiz ve görünmeyen emeği nasıl fark ettiğimiz…" },
+    { type: "p", text: "Bunların her biri topluluk kültürünü şekillendiriyor." },
+    { type: "p", text: "Farklı alanlarda, derneklerden okullara, özel kuruluşlardan çeşitli eğitim çalışmalarına kadar pek çok topluluk deneyimim oldu. Bu deneyimler, birlikte öğrenmenin farklı boyutlarını görmemi sağladı. Dinlemek, ihtiyaçları fark etmek, anlaşmazlıklarla ilişki kurmak ve birbirimize alan açmak, ortak yaşamın önemli parçaları." },
+    { type: "p", text: "Zaman içinde tekrarlanan bu davranışlar, topluluğun kendine özgü kültürünü oluşturuyor." },
+    { type: "h2", text: "Nasıl bir topluluk olmak istiyoruz?" },
+    { type: "p", text: "Bacon'ın kitabı, topluluk oluşturmanın ilişkileri beslemek, katılımı desteklemek, ortak bir yön duygusu geliştirmek ve insanların katkı sunabileceği alanlar yaratmakla güçlendiğini hatırlatıyor." },
+    { type: "p", text: "Ethos kavramı da topluluklara şu soruyla bakmamı sağlıyor:" },
+    { type: "strong", text: "Birlikte nasıl var oluyoruz?" },
+    { type: "p", text: "Bir topluluğun karakteri, o topluluktaki kişilerin birbirleriyle kurduğu ilişkilerde, paylaştığı sorumluluklarda ve birlikte yarattığı deneyimlerde şekilleniyor." },
+    { type: "p", text: "Bu, topluluklar üzerine düşüncelerimi paylaştığım ilk yazı. Okuduklarımı, öğrendiklerimi ve deneyimlerimden geriye kalan soruları burada bir araya getirmek istiyorum. İlk adımı ethos kavramıyla atmak benim için heyecan verici. Umarım bu yazılar, birlikte nasıl var olduğumuz üzerine yeni sorular sormamıza vesile olur." }
+  ]
+}];
 
 const MAILCHIMP_URL = "https://zeynepzumbul.us5.list-manage.com/subscribe/post-json?u=094ac66de559e740d735ea0f8&id=e17b3b6c8d&f_id=009ebeedf0";
 
@@ -412,104 +439,61 @@ function GaleriSerit() {
   );
 }
 
-function BlogPostModal({ post, onClose }) {
+function BlogArticleRoute() {
+  const { slug } = useParams();
+  return <BlogArticle post={BLOG_POSTS.find(post => post.id === slug)} />;
+}
+
+function BlogArticle({ post }) {
   useEffect(() => {
-    const handleKey = (e) => { if (e.key === "Escape") onClose(); };
-    document.addEventListener("keydown", handleKey);
-    return () => document.removeEventListener("keydown", handleKey);
-  }, [onClose]);
+    if (!post) return;
+    document.title = `${post.title} | Zeynep Zümbül`;
+    const meta = document.querySelector('meta[name="description"]');
+    if (meta) meta.setAttribute("content", post.description);
+    return () => { document.title = "Zeynep Zümbül"; };
+  }, [post]);
 
-  const paragraphs = post.content.split("\n\n").filter(Boolean);
-
+  if (!post) return <div className="min-h-screen bg-[#f7f4ee]"><BlogNavbar /><main className="mx-auto max-w-3xl px-6 py-20"><h1 className="text-3xl">Yazı bulunamadı.</h1><Link to="/blog" className="underline">Bloga dön</Link></main></div>;
   return (
-    <div
-      className="fixed inset-0 z-50 flex items-start justify-center bg-black/60 px-4 py-10 overflow-y-auto"
-      onClick={onClose}
-    >
-      <div
-        className="w-full max-w-2xl rounded-2xl bg-white p-8 md:p-12 shadow-2xl"
-        onClick={e => e.stopPropagation()}
-      >
-        <div className="flex items-start justify-between gap-4 mb-6">
-          <div>
-            <span className="inline-block rounded-full bg-[#d4e8e1] px-3 py-1 text-xs font-medium text-[#1a2744] mb-3">
-              {post.category}
-            </span>
-            <h2 className="text-2xl font-bold text-stone-900 leading-snug">{post.title}</h2>
-            <p className="mt-2 text-sm text-stone-400">{post.date}</p>
-          </div>
-          <button
-            onClick={onClose}
-            className="flex-shrink-0 flex h-9 w-9 items-center justify-center rounded-full border border-stone-200 text-stone-500 hover:text-stone-900 transition"
-          >
-            <X size={18} />
-          </button>
+    <div className="min-h-screen bg-[#f7f4ee] text-stone-800">
+      <BlogNavbar />
+      <main className="mx-auto max-w-3xl px-6 md:px-10 py-14 md:py-20">
+        <Link to="/blog" className="text-sm text-stone-500 hover:text-[#1a2744]">← Tüm yazılar</Link>
+        <div className="mt-8 flex items-center gap-3 text-sm text-stone-500"><span className="rounded-full bg-[#d4e8e1] px-3 py-1 text-[#1a2744]">{post.category}</span><span>{post.date}</span></div>
+        <h1 className="mt-6 text-3xl md:text-5xl font-semibold leading-tight text-[#1a2744]">{post.title}</h1>
+        <p className="mt-5 text-sm text-stone-500">{post.author}</p>
+        {post.image && <img src={post.image} alt="Birlikte sohbet eden topluluk üyelerinin çizimi" className="mt-10 w-full aspect-[1200/630] rounded-2xl object-cover" onError={e => { e.currentTarget.style.display = "none"; }} />}
+        <div className="mt-12 space-y-6 text-[17px] leading-8 text-stone-700">
+          {post.sections.map((section, i) => section.type === "h2"
+            ? <h2 key={i} className="pt-5 text-2xl font-semibold leading-snug text-[#1a2744]">{section.text}</h2>
+            : section.type === "strong" ? <p key={i} className="font-semibold text-[#1a2744]">{section.text}</p>
+            : <p key={i}>{section.text}</p>)}
         </div>
-        <hr className="border-stone-100 mb-8" />
-        <div className="space-y-5 text-base leading-8 text-stone-700">
-          {paragraphs.map((p, i) => (
-            <p key={i}>{p}</p>
-          ))}
-        </div>
-      </div>
+      </main>
     </div>
   );
 }
 
 function BlogPage() {
-  const [activePost, setActivePost] = useState(null);
-
   return (
     <div className="min-h-screen bg-[#f7f4ee] text-stone-800">
       <BlogNavbar />
       <main className="mx-auto max-w-7xl px-8 md:px-16 py-20 md:py-28">
-
-        <div className="mb-12">
-          <h1 className="text-4xl font-semibold tracking-tight text-[#1a2744] md:text-5xl">
-            Blog
-          </h1>
-          <p className="mt-3 text-base text-stone-500">
-            Düşünceler, deneyimler ve notlar.
-          </p>
+        <div className="mb-12"><h1 className="text-4xl font-semibold tracking-tight text-[#1a2744] md:text-5xl">Blog</h1><p className="mt-3 text-base text-stone-500">Düşünceler, deneyimler ve notlar.</p></div>
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {BLOG_POSTS.map(post => (
+            <Link to={`/blog/${post.id}`} key={post.id} className="group flex flex-col overflow-hidden rounded-2xl bg-white shadow-sm hover:shadow-md transition-shadow duration-200">
+              {post.image && <img src={post.image} alt="" className="w-full aspect-[1200/630] object-cover" onError={e => { e.currentTarget.style.display = "none"; }} />}
+              <div className="flex flex-1 flex-col p-7">
+                <div className="flex items-center gap-3 mb-5"><span className="rounded-full bg-[#d4e8e1] px-3 py-1 text-xs font-medium text-[#1a2744]">{post.category}</span><span className="text-xs text-stone-400">{post.date}</span></div>
+                <h2 className="text-lg font-semibold text-stone-900 leading-snug mb-3 group-hover:text-[#1a2744]">{post.title}</h2>
+                <p className="text-sm leading-7 text-stone-500 flex-1">{post.excerpt}</p>
+                <span className="mt-6 flex items-center gap-1.5 text-sm font-medium text-[#1a2744]">Devamını oku <ChevronRight size={15} /></span>
+              </div>
+            </Link>
+          ))}
         </div>
-
-        {BLOG_POSTS.length === 0 ? (
-          <div className="rounded-2xl border-2 border-dashed border-stone-200 py-24 text-center">
-            <p className="text-stone-400 text-base">Yakında yazılar burada olacak.</p>
-          </div>
-        ) : (
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-            {BLOG_POSTS.map(post => (
-              <article
-                key={post.id}
-                className="group flex flex-col rounded-2xl bg-white p-7 shadow-sm hover:shadow-md transition-shadow duration-200 cursor-pointer"
-                onClick={() => setActivePost(post)}
-              >
-                <div className="flex items-center gap-3 mb-5">
-                  <span className="rounded-full bg-[#d4e8e1] px-3 py-1 text-xs font-medium text-[#1a2744]">
-                    {post.category}
-                  </span>
-                  <span className="text-xs text-stone-400">{post.date}</span>
-                </div>
-                <h3 className="text-lg font-semibold text-stone-900 leading-snug mb-3 group-hover:text-[#1a2744] transition-colors">
-                  {post.title}
-                </h3>
-                <p className="text-sm leading-7 text-stone-500 flex-1">
-                  {post.excerpt}
-                </p>
-                <div className="mt-6 flex items-center gap-1.5 text-sm font-medium text-[#1a2744]">
-                  <span>Devamını oku</span>
-                  <ChevronRight size={15} className="group-hover:translate-x-1 transition-transform" />
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
       </main>
-
-      {activePost && (
-        <BlogPostModal post={activePost} onClose={() => setActivePost(null)} />
-      )}
     </div>
   );
 }
@@ -550,6 +534,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<SiddetsizIletisimSitesi />} />
         <Route path="/blog" element={<BlogPage />} />
+        <Route path="/blog/:slug" element={<BlogArticleRoute />} />
         <Route path="/nvc-kartlari" element={<NvcKartlari />} />
       </Routes>
     </>
