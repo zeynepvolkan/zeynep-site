@@ -137,6 +137,159 @@ function FloatingBubbles() {
 // Yeni yazı eklemek için bu diziye yeni bir obje ekle.
 // ──────────────────────────────────────────────────────────────────
 const BLOG_POSTS = [{
+  "id": "bir-topluluk-nasil-olusur-muzikist",
+  "title": "Bir Topluluk Nasıl Oluşur? Müzikist’ten Birlikte Üretme Hikâyesi",
+  "category": "Topluluk",
+  "date": "24 Kasım 2026",
+  "author": "Zeynep Zümbül",
+  "image": "/blog/muzikist-birlikte-uretme.jpg",
+  "imageAlt": "Pastel renkli zeminde el ele tutuşarak çember oluşturan müzik notaları",
+  "excerpt": "Ortak amaçlardan aidiyete, iş birliğinden kolektif üretime... Müzikist'in çocuk hakları albümüne topluluk perspektifinden bir bakış.",
+  "description": "Ortak amaçlardan aidiyete, iş birliğinden kolektif üretime... Müzikist'in çocuk hakları albümüne topluluk perspektifinden bir bakış.",
+  "subtitle": "Ortak amaçlardan aidiyete, iş birliğinden kolektif üretime... Müzikist'in çocuk hakları albümüne topluluk perspektifinden bir bakış.",
+  "sections": [
+    {
+      "type": "p",
+      "text": "Bir topluluğu bir arada tutan şey nedir? Ortak bir amaç mı, paylaşılan değerler mi, kurulan ilişkiler mi? Yoksa bütün bunların bir araya gelerek yarattığı aidiyet duygusu mu?"
+    },
+    {
+      "type": "p",
+      "text": "Topluluk oluşturma ve geliştirme üzerine çalışırken bu soruların farklı yanıtlarıyla karşılaşıyorum. Jono Bacon, The Art of Community kitabında toplulukları yalnızca ortak bir ilgi veya amaç etrafında bir araya gelen insan grupları olarak değil; ilişkilerin, ortak anlayışın, güvenin ve katılımın şekillendirdiği yapılar olarak ele alıyor."
+    },
+    {
+      "type": "p",
+      "text": "Kitabın özellikle Collaboration-Driven Ethos (İş Birliğini Merkeze Alan Anlayış) yaklaşımı, toplulukların nasıl birlikte hareket ettiğini anlamak açısından önemli bir çerçeve sunuyor."
+    },
+    {
+      "type": "p",
+      "text": "Bu yaklaşımı, o zamanlar Topluluk ve Projeler Koordinatörü olarak çalıştığım Müzikist'in, Haklarım Benim Varlığım albümünün hikâyesi üzerinden ele almak istiyorum. Çünkü bu albümün arkasında yalnızca müzikal bir üretim değil, farklı insanların ortak bir amaç etrafında buluştuğu, birbirlerinin katkılarıyla güçlenen ve birlikte anlam yaratan bir topluluk deneyimi var."
+    },
+    {
+      "type": "h2",
+      "text": "Ortak amaç, birlikte hareket etme biçimimiz"
+    },
+    {
+      "type": "p",
+      "text": "2024 yılında Müzikist Topluluğu olarak çocuk haklarını sanat yoluyla görünür kılmayı amaçlayan bir projeye başladık. Çocuk hakları rehberi ve çocuk haklarını şarkılarla anlatan bir albüm hazırlıyorduk."
+    },
+    {
+      "type": "p",
+      "text": "Projenin en önemli özelliklerinden biri, çocukların yalnızca bu çalışmanın hedef kitlesi olmamasıydı. Müzikist Çocuk Korosu çocukları, şarkı sözlerini Onur Kahvecioğlu ile birlikte yazdı. Böylece çocuklar kendi haklarını anlatan üretimin doğrudan bir parçası oldular."
+    },
+    {
+      "type": "p",
+      "text": "Topluluk çalışmalarında katılımı yalnızca bir etkinliğe veya çalışmaya dahil olmak olarak değerlendirmiyorum. Gerçek katılım, insanların fikirleriyle süreci etkileyebildiği, söz sahibi olabildiği ve ortaya çıkan üretimde kendilerinden bir şey bulabildiği alanlar yaratmakla mümkün."
+    },
+    {
+      "type": "p",
+      "text": "Bu açıdan çocukların şarkıların oluşumuna katkısı, projenin en değerli topluluk pratiklerinden biriydi."
+    },
+    {
+      "type": "h2",
+      "text": "Katkı sunmak için herkesin aynı şeyi vermesi gerekmez"
+    },
+    {
+      "type": "p",
+      "text": "Albüm kayıtları sırasında stüdyoda oluşan atmosfer, kitabın iş birliğini merkeze alan topluluk anlayışının güzel bir örneğiydi."
+    },
+    {
+      "type": "p",
+      "text": "Kimi evinden kahvaltılık getirdi, kimi kayıt organizasyonunu üstlendi, kimi çocuklarla ilgilendi, kimi sanatçıları ağırladı. İTÜ MİAM'da okuyan iki öğrenci de sınav dönemlerinde olmalarına rağmen kayıt ekibine önemli katkılar sundu."
+    },
+    {
+      "type": "p",
+      "text": "Burada önemli olan herkesin aynı sorumluluğu üstlenmesi değil, ortak amaca kendi imkânları ve becerileri doğrultusunda katkı sunabilmesiydi."
+    },
+    {
+      "type": "p",
+      "text": "Jono Bacon'ın kitabında topluluğun temel unsurlarından biri olarak ele aldığı aidiyet ve katkı ilişkisi tam da burada anlam kazanıyor. İnsanlar yalnızca bir yapının içinde bulundukları için değil, orada değer gördüklerini, katkılarının anlam taşıdığını ve kendilerine yer açıldığını hissettiklerinde toplulukla daha güçlü bir bağ kurabiliyor."
+    },
+    {
+      "type": "quote",
+      "text": "Bazen bir topluluğun en önemli yatırımı, insanların birbirine sunduğu zaman, emek ve güvendir."
+    },
+    {
+      "type": "h2",
+      "text": "Topluluk kültürü, zor zamanlarda da şekillenir"
+    },
+    {
+      "type": "p",
+      "text": "Elbette süreç her zaman planladığımız gibi ilerlemedi. Kayıtlar gecikti, mekân bulmakta zorlandık, planlarımız değişti. İTÜ MİAM'ın desteğiyle kayıtlarımızı gerçekleştirebildik. Albüm yayımlandıktan sonra lansmanımız iptal oldu, ilk konserimiz ise 23 Nisan 2025'te İstanbul'da yaşanan deprem nedeniyle yarıda kaldı."
+    },
+    {
+      "type": "p",
+      "text": "Topluluk çalışmalarında güven, sabır ve açık iletişim yalnızca güzel zamanların ihtiyaçları değil. Aslında belirsizlikler ve beklenmedik durumlar karşısında birlikte hareket edebilmenin temel koşulları."
+    },
+    {
+      "type": "p",
+      "text": "Bacon'ın Becoming Yourself bölümünde ele aldığı topluluk liderliği yaklaşımı, liderin yalnızca organizasyonu sağlayan kişi değil, insanların bir arada güvenle var olabilecekleri, birbirlerini destekleyebilecekleri ve ilişki kurabilecekleri bir ortamı besleyen kişi olduğunu vurguluyor."
+    },
+    {
+      "type": "p",
+      "text": "Birlikte üretmek, her şeyin sorunsuz ilerlemesi demek değil. Değişen koşullara rağmen ortak niyeti koruyabilmek ve birbirimize eşlik edebilmek de bu sürecin bir parçası."
+    },
+    {
+      "type": "h2",
+      "text": "Üretimimiz bizden daha büyük bir hikâyeye dönüştüğünde"
+    },
+    {
+      "type": "p",
+      "text": "26 Mart 2025'te yayımlanan Haklarım Benim Varlığım albümü, zamanla Müzikist'in ve kayıt ekibinin sınırlarını aşarak farklı derneklere, eğitim kurumlarına, psikologlara ve çocuklarla çalışan kişilere ulaştı."
+    },
+    {
+      "type": "p",
+      "text": "Bugün başka bir topluluğun paylaşımında şarkılarımızla karşılaşmak, eşimin pazar kahvaltısı hazırlarken bir melodiyi mırıldandığını duymak ya da bir arkadaşımın şarkılarımızdan birini söylediğine tanık olmak benim için büyük bir mutluluk."
+    },
+    {
+      "type": "p",
+      "text": "Çünkü ortak üretimin değeri bu ürünün başkaları tarafından sahiplenilmesi, yeni karşılaşmalara alan açması ve farklı hikâyelerin bir parçası hâline gelmesiyle büyüyor."
+    },
+    {
+      "type": "h2",
+      "text": "Birlikte üretmekten topluluk olmaya"
+    },
+    {
+      "type": "p",
+      "text": "Müzikist'in bu deneyimine topluluk perspektifinden baktığımda birkaç önemli unsurun bir araya geldiğini görüyorum: Ortak bir amaç, amaca ulaşmak için beslenen inanç, iş birliğini destekleyen bir kültür, farklı biçimlerde katkı sunabilen insanlar, söz sahibi olma alanları, güvene dayalı ilişkiler ve paylaşılan bir hafıza."
+    },
+    {
+      "type": "p",
+      "text": "Bunların hiçbiri tek başına bir topluluk yaratmaya yetmeyebilir. Ancak bir araya geldiklerinde insanların yalnızca aynı proje üzerinde çalışmasını değil, ortak bir hikâyenin parçası olmasını da mümkün kılarlar."
+    },
+    {
+      "type": "p",
+      "text": "Benim için Haklarım Benim Varlığım albümü tam olarak böyle bir hikâye."
+    },
+    {
+      "type": "p",
+      "text": "Bu nedenle topluluk oluşturma çalışmalarında, bir projeyi birlikte nasıl gerçekleştirdiğimize de odaklanmayı önemsiyorum. Çünkü ortak üretimin değerini, ortaya çıkan ürünün yanı sıra süreç boyunca kurduğumuz ilişkiler, birbirimize sunduğumuz katkılar, açtığımız alanlar ve birlikte geliştirdiğimiz aidiyet duygusu da şekillendiriyor."
+    },
+    {
+      "type": "h2",
+      "text": "İlham ve kaynaklar"
+    },
+    {
+      "type": "h3",
+      "text": "Bu yazıya ilham veren deneyim"
+    },
+    {
+      "type": "p",
+      "text": "Bu yazı, Müzikist çatısı altında hayata geçirdiğimiz Haklarım Benim Varlığım çocuk hakları albümünün üretim sürecine dair deneyim ve gözlemlerimden ilham aldı. Projenin hikâyesini ve birlikte üretme yolculuğumuzu daha yakından okumak için: https://www.muzikist.org/blog/muco-zeynep-zumbul"
+    },
+    {
+      "type": "p",
+      "text": "Müzikist'in çalışmalarını keşfetmek için: https://www.muzikist.org/"
+    },
+    {
+      "type": "h3",
+      "text": "Yararlanılan kaynak"
+    },
+    {
+      "type": "p",
+      "text": "Jono Bacon, The Art of Community: Building the New Age of Participation, 2nd Edition, O’Reilly Media."
+    }
+  ]
+}, {
   id: "ethos-bir-toplulugun-karakteri-nasil-olusur",
   title: "Ethos: Bir Topluluğun Karakteri Nasıl Oluşur?",
   category: "Topluluk",
@@ -439,6 +592,10 @@ function GaleriSerit() {
   );
 }
 
+function formatBlogText(text) {
+  return text.split(/(https?:\/\/[^\s]+|The Art of Community(?:: Building the New Age of Participation)?|Haklarım Benim Varlığım|Collaboration-Driven Ethos|Becoming Yourself)/g).map((part, i) => /^https?:\/\//.test(part) ? <a key={i} href={part} target="_blank" rel="noopener noreferrer" className="underline break-all text-[#1a2744]">{part}</a> : /^(The Art of Community|Haklarım Benim Varlığım|Collaboration-Driven Ethos|Becoming Yourself)/.test(part) ? <em key={i}>{part}</em> : part);
+}
+
 function BlogArticleRoute() {
   const { slug } = useParams();
   return <BlogArticle post={BLOG_POSTS.find(post => post.id === slug)} />;
@@ -461,13 +618,16 @@ function BlogArticle({ post }) {
         <Link to="/blog" className="text-sm text-stone-500 hover:text-[#1a2744]">← Tüm yazılar</Link>
         <div className="mt-8 flex items-center gap-3 text-sm text-stone-500"><span className="rounded-full bg-[#d4e8e1] px-3 py-1 text-[#1a2744]">{post.category}</span><span>{post.date}</span></div>
         <h1 className="mt-6 text-3xl md:text-5xl font-semibold leading-tight text-[#1a2744]">{post.title}</h1>
+        {post.subtitle && <p className="mt-5 text-lg leading-8 text-stone-600">{post.subtitle}</p>}
         <p className="mt-5 text-sm text-stone-500">{post.author}</p>
-        {post.image && <img src={post.image} alt="Birlikte sohbet eden topluluk üyelerinin çizimi" className="mt-10 w-full aspect-[1200/630] rounded-2xl object-cover" onError={e => { e.currentTarget.style.display = "none"; }} />}
+        {post.image && <img src={post.image} alt={post.imageAlt || "Birlikte sohbet eden topluluk üyelerinin çizimi"} className="mt-10 w-full aspect-[1200/630] rounded-2xl object-cover" onError={e => { e.currentTarget.style.display = "none"; }} />}
         <div className="mt-12 space-y-6 text-[17px] leading-8 text-stone-700">
           {post.sections.map((section, i) => section.type === "h2"
             ? <h2 key={i} className="pt-5 text-2xl font-semibold leading-snug text-[#1a2744]">{section.text}</h2>
+            : section.type === "h3" ? <h3 key={i} className="text-lg font-semibold text-[#1a2744]">{section.text}</h3>
+            : section.type === "quote" ? <blockquote key={i} className="border-l-4 border-[#d4e8e1] pl-5 font-medium italic text-[#1a2744]">{section.text}</blockquote>
             : section.type === "strong" ? <p key={i} className="font-semibold text-[#1a2744]">{section.text}</p>
-            : <p key={i}>{section.text}</p>)}
+            : <p key={i}>{formatBlogText(section.text)}</p>)}
         </div>
       </main>
     </div>
