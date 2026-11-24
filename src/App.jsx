@@ -141,7 +141,7 @@ const BLOG_POSTS = [{
   "title": "Bir Topluluk Nasıl Oluşur? Müzikist’ten Birlikte Üretme Hikâyesi",
   "category": "Topluluk",
   "date": "24 Kasım 2026",
-  "author": "Zeynep Zümbül",
+  "author": "Zeynep Zümbül Yılmaz",
   "image": "/blog/muzikist-birlikte-uretme.jpg",
   "imageAlt": "Pastel renkli zeminde el ele tutuşarak çember oluşturan müzik notaları",
   "excerpt": "Ortak amaçlardan aidiyete, iş birliğinden kolektif üretime... Müzikist'in çocuk hakları albümüne topluluk perspektifinden bir bakış.",
@@ -294,7 +294,7 @@ const BLOG_POSTS = [{
   title: "Ethos: Bir Topluluğun Karakteri Nasıl Oluşur?",
   category: "Topluluk",
   date: "16 Kasım 2026",
-  author: "Zeynep Zümbül",
+  author: "Zeynep Zümbül Yılmaz",
   image: "/blog/ethos-topluluk.jpg",
   excerpt: "Bir topluluğu bir araya getiren şey ne? Peki insanları bir arada tutan ne? Ethos kavramıyla toplulukların karakterine bakıyoruz.",
   description: "Bir topluluğun karakteri nasıl oluşur? Ethos kavramı üzerinden topluluk kültürünü, ortak değerleri ve birlikte var olma biçimlerimizi keşfediyoruz.",
@@ -604,7 +604,7 @@ function BlogArticleRoute() {
 function BlogArticle({ post }) {
   useEffect(() => {
     if (!post) return;
-    document.title = `${post.title} | Zeynep Zümbül`;
+    document.title = `${post.title} | Zeynep Zümbül Yılmaz`;
     const meta = document.querySelector('meta[name="description"]');
     if (meta) meta.setAttribute("content", post.description);
     return () => { document.title = "Zeynep Zümbül"; };
